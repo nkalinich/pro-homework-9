@@ -2,56 +2,41 @@
 // карт номиналом 2-10 всех мастей
 // карт jack, queen, king всех мастей
 // карт тузов всех мастей
-// Все теги рендерим с помощью js. Внешний вид задания НЕ важен, важен только JS-код
-
 // debugger;
 
-trs = [];
-number = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "T"];
-cards = ["clubs", "spades", "diamonds", "hearts"];
-person = ["jack", "king", "queen"];
+suit =["clubs","spades","diamonds","hearts"];
+picture = ["jack","queen","king","t"];
+cards = [];
 
-cards = cards.concat(cards);
+for(i = 2; i <= 10; i++) {
+    for(j = 0; j < suit.length; j++) {
+        cardInfo = (`<div class="card__info">
+            ${i}
+            <img src="images/${suit[j]}.svg" alt="${suit[j]}">
+        </div>`);
 
-for(str = 1; str <= 7; str++) {                  /// строки
-
-    if (str <= 6) {                      
-        tds = [];
-        for (j = 1; j <= 8; j++) {        /// ячейки
-            tds.push(`<td 
-            <div class="card">
-                <div class="card__info">${number[j - 1]}<img src="images/${cards[j - 1]}.svg" alt="${cards[j - 1]}"></div>
-                <div class="card__info">${number[j - 1]}<img src="images/${cards[j - 1]}.svg" alt="${cards[j - 1]}"></div>
-            </div></td>`)
-        }
-        trs.push(`<tr>${tds.join("")}</tr>`);
+        cards.push(`<div class="card">
+            ${cardInfo}
+            ${cardInfo}
+        </div>`);
     }
-
-
-
-
-    else {                             /// тузы
-        tds = [];    
-        for (j = 1; j <= 4; j++) {
-            tds.push(`<td 
-            <div class="card">
-                <div class="card__info">${number[number.length-1]}<img src="images/${cards[j - 1]}.svg" alt="${cards[j - 1]}"></div>
-                <img class="person" src="images/${cards[j - 1]}.svg" alt="${cards[j - 1]}">
-                <div class="card__info">${number[number.length-1]}<img src="images/${cards[j - 1]}.svg" alt="${cards[j - 1]}"></div>
-            </di></td>`)
-        }
-        trs.push(`<tr>${tds.join("")}</tr>`);
-    }  
 }
 
-document.write(`<table class="wrapper">${trs.join("")}</table>`);
+for(i = 0; i < picture.length; i++) {
+    for(j = 0; j < suit.length; j++) {
+        cardInfo = (`<div class="card__info">
+            ${picture[i][0].toUpperCase()}
+            <img src="images/${suit[j]}.svg" alt="${suit[j]}">
+        </div>`);
 
+        figure = picture[i] !== "t" ? picture[i] : suit[j];
 
-// 
-// }
+        cards.push(`<div class="card card--person">
+            ${cardInfo}
+            <img class="person" src="images/${figure}.svg" alt="${figure}">
+            ${cardInfo}
+        </div>`);
+    }
+}
 
-
-
-
-
-
+document.write(`<div class="wrapper">${cards.join(``)}</div>`);

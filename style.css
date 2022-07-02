@@ -1,5 +1,5 @@
 body {
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     color: #353c4d;
     font-size: 20px; 
 }
@@ -9,7 +9,7 @@ svg, img {
 }
   
 .wrapper {
-    width: 1000px;
+    width: 900px;
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
@@ -29,26 +29,22 @@ svg, img {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin: 5px 10px;
+    margin: 3px 6px;
 }
 
-.person {
+.card--person .person {
     height: 50px; 
 }
 
-.wrapper tr {
+.card__info {
     display: flex;
     align-items: center; 
 }
 
-.wrapper tr:last-of-type {
-    justify-content: center; 
-}
-
-.card__info img{
-    margin-left: 5px; 
-}
-
 .card__info:last-of-type {
-    text-align: right;
+    justify-content: flex-end; 
+}
+
+.card__info img {
+    margin-left: 5px; 
 }
